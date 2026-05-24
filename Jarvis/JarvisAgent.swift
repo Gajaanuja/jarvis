@@ -20,7 +20,7 @@ class JarvisAgent: NSObject, ObservableObject, AVSpeechSynthesizerDelegate {
     @Published var activeAgent: AIAgent = .gemini  // shown in UI
 
     private let gemini    = GeminiService(apiKey: Config.geminiAPIKey)
-//    private let openai    = OpenAIService(apiKey: "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")
+//    private let openai    = OpenAIService(apiKey: "YOUR_OPENAI_KEY")
 //    private let anthropic = AnthropicService(apiKey: "YOUR_ANTHROPIC_KEY")
 
     private let eventStore = EKEventStore()
