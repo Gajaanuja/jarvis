@@ -20,4 +20,5 @@ enum Config {
     static let spotifySecret         = ""
     static let googleClientID        = ""
     static let googleClientSecret    = ""
+    
 }
