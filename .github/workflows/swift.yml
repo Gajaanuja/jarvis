@@ -1,10 +1,7 @@
-# .github/workflows/swift.yml
 name: Build Jarvis
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
     branches: [ "main" ]
 
 jobs:
@@ -14,17 +11,17 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Create Config.swift from secrets
+    - name: Create Config.swift
       run: |
         cat > Jarvis/Config.swift << 'EOF'
         enum Config {
-            static let geminiAPIKey          = ""
-            static let openAIKey             = ""
-            static let anthropicKey          = ""
-            static let spotifyClientID       = ""
-            static let spotifySecret         = ""
-            static let googleClientID        = ""
-            static let googleClientSecret    = ""
+            static let geminiAPIKey       = ""
+            static let openAIKey          = ""
+            static let anthropicKey       = ""
+            static let spotifyClientID    = ""
+            static let spotifySecret      = ""
+            static let googleClientID     = ""
+            static let googleClientSecret = ""
         }
         EOF
 
@@ -34,4 +31,11 @@ jobs:
           -project Jarvis.xcodeproj \
           -scheme Jarvis \
           -destination 'platform=macOS' \
+          -derivedDataPath build \
           CODE_SIGNING_ALLOWED=NO
+
+    - name: Upload .app
+      uses: actions/upload-artifact@v4
+      with:
+        name: Jarvis.app
+        path: build/Build/Products/Debug/Jarvis.app
