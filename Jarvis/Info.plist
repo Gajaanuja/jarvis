@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>Jarvis needs the microphone</string>
+
+    <key>NSSpeechRecognitionUsageDescription</key>
+    <string>Jarvis needs speech recognition</string>
+
+    <key>NSRemindersUsageDescription</key>
+    <string>Jarvis can set reminders</string>
+    
+    <key>LSUIElement</key>
+    <true/>
+    
+    <key>com.apple.security.automation.apple-events</key>
+    <true/>
+    
+    <key>com.apple.security.files.user-selected.read-write</key>
+    <true/>
+    <key>com.apple.security.files.downloads.read-write</key>
+    <true/>
+    
+    <key>com.apple.security.network.server</key>
+    <true/>
+    
+    <key>com.apple.security.network.client</key>
+    <true/>
+    
+    <key>com.apple.developer.ubiquity-kvstore-identifier</key>
+    <string>$(TeamIdentifierPrefix)com.Jaanu.Jarvis</string>
+    
+</dict>
+</plist>
