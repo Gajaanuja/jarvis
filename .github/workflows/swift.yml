@@ -1,0 +1,37 @@
+# .github/workflows/swift.yml
+name: Build Jarvis
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Create Config.swift from secrets
+      run: |
+        cat > Jarvis/Config.swift << 'EOF'
+        enum Config {
+            static let geminiAPIKey          = ""
+            static let openAIKey             = ""
+            static let anthropicKey          = ""
+            static let spotifyClientID       = ""
+            static let spotifySecret         = ""
+            static let googleClientID        = ""
+            static let googleClientSecret    = ""
+        }
+        EOF
+
+    - name: Build
+      run: |
+        xcodebuild build \
+          -project Jarvis.xcodeproj \
+          -scheme Jarvis \
+          -destination 'platform=macOS' \
+          CODE_SIGNING_ALLOWED=NO
